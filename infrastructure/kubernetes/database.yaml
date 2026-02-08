@@ -1,0 +1,16 @@
+apiVersion: databases.aws.amazon.com/v1alpha1
+kind: DBInstance
+metadata:
+  name: secureshare-mysql
+  namespace: default
+spec:
+  engine: mysql
+  engineVersion: "8.0"
+  dbInstanceClass: db.t3.micro
+  allocatedStorage: 20
+  storageType: gp2
+  masterUsername: admin
+  masterPassword: ChangeMe!
+  dbInstanceIdentifier: secureshare-db
+  skipFinalSnapshot: true
+  backupRetentionPeriod: 7

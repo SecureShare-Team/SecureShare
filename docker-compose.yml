@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: secureshare-mysql
+    environment:
+      MYSQL_DATABASE: secureshare_dev
+      MYSQL_USER: secureshare
+      MYSQL_PASSWORD: password123
+      MYSQL_ROOT_PASSWORD: root123
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - secureshare
+
+  backend:
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    container_name: secureshare-backend
+    environment:
+      NODE_ENV: development
+      DB_HOST: mysql
+      DB_NAME: secureshare_dev
+      DB_USER: secureshare
+      DB_PASSWORD: password123
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mysql
+    networks:
+      - secureshare
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+
+  frontend:
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    container_name: secureshare-frontend
+    environment:
+      REACT_APP_API_URL: http://localhost:5000/api
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - secureshare
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+
+volumes:
+  mysql_data:
+
+networks:
+  secureshare:
+    driver: bridge
