@@ -11,19 +11,34 @@
     "test:e2e": "jest tests/e2e --runInBand"
   },
   "dependencies": {
-    "express": "",
-    "express-rate-limit": "",
-    "mysql2": "",
-    "@aws-sdk/client-s3": "",
-    "@aws-sdk/s3-request-presigner": "",
-    "busboy": "",
-    "jwks-rsa": "",
-    "jsonwebtoken": "",
-    "winston": "",
-    "dotenv": ""
+    "@aws-sdk/client-s3": "^3.997.0",
+    "@aws-sdk/s3-request-presigner": "^3.997.0",
+    "busboy": "^1.6.0",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "jwks-rsa": "^3.2.2",
+    "mysql2": "^3.18.0",
+    "winston": "^3.19.0"
   },
   "devDependencies": {
-    "jest": "",
-    "nodemon": ""
-  }
+    "jest": "^30.2.0",
+    "nodemon": "^3.1.14"
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SecureShare-Team/SecureShare.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/SecureShare-Team/SecureShare/issues"
+  },
+  "homepage": "https://github.com/SecureShare-Team/SecureShare#readme"
 }
