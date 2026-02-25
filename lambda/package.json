@@ -1,0 +1,10 @@
+{
+  "name": "secureshare-lambda",
+  "version": "1.0.0",
+  "description": "SecureShare Lambda — 바이러스 스캔 핸들러 (EC2와 독립 번들링)",
+  "main": "scanHandler.js",
+  "dependencies": {
+    "mysql2": "",
+    "@aws-sdk/client-s3": ""
+  }
+}

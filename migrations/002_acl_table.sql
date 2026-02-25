@@ -1,0 +1,17 @@
+-- migrations/002_acl_table.sql — ACL 테이블 DDL
+--
+-- 001_initial_schema.sql 실행 이후에 적용
+-- files 테이블이 존재해야 FK 제약 생성 가능
+-- 담당: A
+-- ─────────────────────────────────────────────────────────────────────────────
+
+-- ── file_acl 테이블 ───────────────────────────────────────────────────────────
+-- 파일별 사용자 권한 목록 관리
+-- file_id     : files 테이블 FK
+-- grantee_sub : 권한을 부여받은 사용자의 Cognito sub
+-- permission  : READ | WRITE | ADMIN (permissions 상수 참조)
+-- granted_by  : 권한을 부여한 사용자의 Cognito sub (감사 추적용)
+-- granted_at  : 권한 부여 시각
+--
+-- 복합 UNIQUE 제약: (file_id, grantee_sub, permission)
+--   → 동일 파일에 동일 사용자가 동일 권한을 중복 보유하지 않도록 방지
