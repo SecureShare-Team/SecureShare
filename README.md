@@ -1,1 +1,3 @@
-# SecureShare v2
+﻿# SecureShare v2
+
+사용자 권한 기반 파일 공유와 접근 이력을 기록·분석하는 보안 파일 관리 서비스
