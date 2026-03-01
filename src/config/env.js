@@ -20,3 +20,45 @@
  *
  * 담당: 공통
  */
+
+const dotenv = require("dotenv");
+
+dotenv.config();
+
+const requiredKeys = [
+  "MASTER_KEY",
+  "DB_HOST",
+  "DB_USER",
+  "DB_PASSWORD",
+  "DB_NAME",
+  "AWS_REGION",
+  "S3_QUARANTINE_BUCKET",
+  "S3_CLEAN_BUCKET",
+  "COGNITO_USER_POOL_ID",
+  "COGNITO_REGION",
+];
+
+const missingKeys = requiredKeys.filter((key) => !process.env[key]);
+
+if (missingKeys.length > 0) {
+  console.error(
+    `[config/env] Missing required env: ${missingKeys.join(", ")}`
+  );
+  process.exit(1);
+}
+
+const env = {
+  MASTER_KEY: process.env.MASTER_KEY,
+  DB_HOST: process.env.DB_HOST,
+  DB_PORT: Number(process.env.DB_PORT || 3306),
+  DB_USER: process.env.DB_USER,
+  DB_PASSWORD: process.env.DB_PASSWORD,
+  DB_NAME: process.env.DB_NAME,
+  AWS_REGION: process.env.AWS_REGION,
+  S3_QUARANTINE_BUCKET: process.env.S3_QUARANTINE_BUCKET,
+  S3_CLEAN_BUCKET: process.env.S3_CLEAN_BUCKET,
+  COGNITO_USER_POOL_ID: process.env.COGNITO_USER_POOL_ID,
+  COGNITO_REGION: process.env.COGNITO_REGION,
+};
+
+module.exports = env;
