@@ -4,6 +4,8 @@
 .env.*.local
 .env.*
 !.env.example
+env
+ENV
 
 # Dependencies
 node_modules/
